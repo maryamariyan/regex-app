@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Text;
 
 namespace regexapp
 {
@@ -14,7 +15,7 @@ namespace regexapp
             //RemoveMultipleBlankLinesToNoBlank();
 
             RemoveHeaderComments();
-            RemoveMultipleBlankLinesToNoBlank();
+            RemoveMultipleBlankLinesWithProperHeaderComment();
             Console.WriteLine("Hello World!");
         }
 
@@ -46,13 +47,30 @@ namespace regexapp
 
         public static void RemoveMultipleBlankLinesToNoBlank()
         {
-            string[] files = Directory.GetFiles(@"C:\CodeHub\corefx\src\System.ComponentModel.Composition\", "*.cs", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(@"/Users/mariyan/CodeHub/corefx/src/System.ComponentModel.Composition/", "*.cs", SearchOption.AllDirectories);
             foreach (var item in files)
             {
                 var text = File.ReadAllText(item);
                 var rgex = new Regex(@"(\r?\n\s*){3,}");
                 var rgex2 = new Regex(@"(\r?\n\s*){3,}");
                 var res = rgex.Replace(text, Environment.NewLine);
+                if (rgex2.IsMatch(text)) File.WriteAllText(item, res);
+            }
+        }
+
+        public static void RemoveMultipleBlankLinesWithProperHeaderComment()
+        {
+            string[] files = Directory.GetFiles(@"/Users/mariyan/CodeHub/corefx/src/System.ComponentModel.Composition/", "*.cs", SearchOption.AllDirectories);
+            foreach (var item in files)
+            {
+                var text = File.ReadAllText(item);
+                var rgex = new Regex(@"(\r?\n\s*){3,}");
+                var rgex2 = new Regex(@"(\r?\n\s*){3,}");
+		var sb = new StringBuilder();
+		sb.Append("// Licensed to the .NET Foundation under one or more agreements.").Append(Environment.NewLine)
+		        .Append("// The .NET Foundation licenses this file to you under the MIT license.").Append(Environment.NewLine)
+        		.Append("// See the LICENSE file in the project root for more information.").Append(Environment.NewLine);
+                var res = rgex.Replace(text, sb.ToString());
                 if (rgex2.IsMatch(text)) File.WriteAllText(item, res);
             }
         }
@@ -64,7 +82,7 @@ namespace regexapp
 
         public static void RemoveHeaderComments()
         {
-            string[] files = Directory.GetFiles(@"C:\CodeHub\corefx\src\System.ComponentModel.Composition\", "*.cs", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(@"/Users/mariyan/CodeHub/corefx/src/System.ComponentModel.Composition/", "*.cs", SearchOption.AllDirectories);
             foreach (var item in files)
             {
                 var text = File.ReadAllText(item);

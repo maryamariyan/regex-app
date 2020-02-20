@@ -9,19 +9,19 @@ namespace regexapp
     {
         static void Main(string[] args)
         {
-            //RemoveMultipleBlankLines();
+            RemoveMultipleBlankLines();
 
             //RemoveAnnotationLine();
             //RemoveMultipleBlankLinesToNoBlank();
 
-            RemoveHeaderComments();
-            RemoveMultipleBlankLinesWithProperHeaderComment();
+            //RemoveHeaderComments();
+            //RemoveMultipleBlankLinesWithProperHeaderComment();
             Console.WriteLine("Hello World!");
         }
 
         public static void RemoveMultipleBlankLines()
         {
-            string[] files = Directory.GetFiles(@"/Users/mariyan/CodeHub/corefx/src/System.ComponentModel.Composition/", "*.cs", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(@"C:\CodeHub\other-corefx\corefx\src\System.Data.OleDb\", "*.cs", SearchOption.AllDirectories);
             foreach (var item in files)
             {
                 var text = File.ReadAllText(item);
@@ -34,7 +34,7 @@ namespace regexapp
 
         public static void RemoveAnnotationLine()
         {
-            string[] files = Directory.GetFiles(@"/Users/mariyan/CodeHub/corefx/src/System.ComponentModel.Composition/", "*.cs", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(@"C:\CodeHub\other-corefx\corefx\src\System.Data.OleDb\", "*.cs", SearchOption.AllDirectories);
             foreach (var item in files)
             {
                 var text = File.ReadAllText(item);
@@ -47,7 +47,7 @@ namespace regexapp
 
         public static void RemoveMultipleBlankLinesToNoBlank()
         {
-            string[] files = Directory.GetFiles(@"/Users/mariyan/CodeHub/corefx/src/System.ComponentModel.Composition/", "*.cs", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(@"C:\CodeHub\other-corefx\corefx\src\System.Data.OleDb\", "*.cs", SearchOption.AllDirectories);
             foreach (var item in files)
             {
                 var text = File.ReadAllText(item);
@@ -60,7 +60,7 @@ namespace regexapp
 
         public static void RemoveMultipleBlankLinesWithProperHeaderComment()
         {
-            string[] files = Directory.GetFiles(@"/Users/mariyan/CodeHub/corefx/src/System.ComponentModel.Composition/", "*.cs", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(@"C:\CodeHub\other-corefx\corefx\src\System.Data.OleDb\", "*.cs", SearchOption.AllDirectories);
             foreach (var item in files)
             {
                 var text = File.ReadAllText(item);
@@ -82,7 +82,7 @@ namespace regexapp
 
         public static void RemoveHeaderComments()
         {
-            string[] files = Directory.GetFiles(@"/Users/mariyan/CodeHub/corefx/src/System.ComponentModel.Composition/", "*.cs", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(@"C:\CodeHub\other-corefx\corefx\src\System.Data.OleDb\", "*.cs", SearchOption.AllDirectories);
             foreach (var item in files)
             {
                 var text = File.ReadAllText(item);
